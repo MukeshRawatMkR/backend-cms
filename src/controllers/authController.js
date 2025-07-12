@@ -54,21 +54,35 @@ const signup = async (req, res) => {
 // Login API
  const login = async (req, res) => {
   try {
+    
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) return res.status(401).json({ error: 'Invalid credentials' });
 
-    const match = await bcrypt.compare(password, user.password);
+    const match = await user.validatePassword(password);
     if (!match) return res.status(401).json({ error: 'Invalid credentials' });
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
-    res.status(200).json({ token });
+    const token = await user.getJWTToken();
+    console.log("I'm here ", token);
+    res.cookie("token", token, { expires: new Date(Date.now() + 24 * 60 * 60 * 1000) }); // 1 day
+    res.status(200).json({ message: 'Login successful', token });
   } catch (err) {
     res.status(500).json({ error: 'Login failed' });
   }
 };
 
+// Logout API
+const logout = (req, res) => {
+  try {
+    res.clearCookie('token', null, { expires: new Date(Date.now()) }); // Clear cookie
+    res.status(200).json({ message: 'Logout successful' });
+  } catch (err) {
+    res.status(500).json({ error: 'Logout failed' });
+  }
+};
+
 module.exports = {
   signup,
-  login
+  login,
+  logout
 };

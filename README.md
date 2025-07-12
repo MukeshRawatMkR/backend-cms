@@ -50,3 +50,27 @@ MIT
 
 
 const URI -> mongodb+srv://mukeshrawatmkr:<db_password>@cluster0testing.lgzkt.mongodb.net/
+
+HTTP Method	   Route	         Auth Required?	               Purpose
+POST	         /api/auth/register❌	Register a new user (sign-up)
+POST	          /api/auth/login	❌	Login and receive a JWT token
+POST	          /api/blogs	      ✅	Create a new blog (only logged-in users)
+GET	           /api/blogs	   ❌	Publicly list all blogs (yours + others)
+GET	           /api/blogs/my	✅	Get only your own blogs
+PUT	         /api/blogs/:id	   ✅	Update your blog post (authorization: owner only)
+DELETE	      /api/blogs/:id	   ✅	Delete your blog post (authorization: owner only)
+
+
+
+
+✅ After These, What’s Optional But Strongly Recommended:
+
+Feature	         Route Example	                   Notes
+Search Blogs	   GET /api/blogs?search=react	     Filter by title/content
+Filter by Tags	   GET /api/blogs?tag=JS	            Add tags to blog schema
+Like Blog	      POST /api/blogs/:id/like	         Toggle-like system
+Comment	         POST /api/blogs/:id/comments     	Blog-commenting system
+Get Blog By ID	   GET /api/blogs/:id               	For single blog detail page
+Swagger Docs	   /api-docs                        	Auto-generated API docs
+
+

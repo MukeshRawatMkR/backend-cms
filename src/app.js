@@ -18,6 +18,10 @@ app.use(express.static('public'));
 
 app.use('/', routes);
 
+
+// app.use("/api/auth", require("./routes/authRoutes"));
+// app.use("/api/blogs", require("./routes/blogRoutes"));
+
 // Error Handler
 // app.use(errorHandler);
 
