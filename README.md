@@ -63,7 +63,7 @@ DELETE	      /api/blogs/:id	   ✅	Delete your blog post (authorization: owner o
 
 
 
-✅ After These, What’s Optional But Strongly Recommended:
+Additional but powerfull APIs:
 
 Feature	         Route Example	                   Notes
 Search Blogs	   GET /api/blogs?search=react	     Filter by title/content
