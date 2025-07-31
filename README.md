@@ -2,6 +2,12 @@
 
 A professional backend portfolio built with Node.js, Express, and Mongoose (MongoDB).
 
+## Git Configuration:
+- git config --global user.name "Your Name"
+- git config --global user.email "you@example.com"
+
+-git config --global --add safe.directory "D:/Code/Projects/Portfolio/backend-cms-portfolio"
+
 ## Features
 
 - Modular folder structure
@@ -75,7 +81,6 @@ application/json
 ##
 
 
-Additional but powerfull APIs:
 
 Feature	         Route Example	                   Notes
 Search Blogs	   GET /api/blogs?search=react	     Filter by title/content
