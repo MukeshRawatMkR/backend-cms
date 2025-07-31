@@ -63,7 +63,7 @@ const signup = async (req, res) => {
     if (!match) return res.status(401).json({ error: 'Invalid credentials' });
 
     const token = await user.getJWTToken();
-    console.log("I'm here ", token);
+    // console.log("I'm here ", token);
     res.cookie("token", token, { expires: new Date(Date.now() + 24 * 60 * 60 * 1000) }); // 1 day
     res.status(200).json({ message: 'Login successful', token });
   } catch (err) {

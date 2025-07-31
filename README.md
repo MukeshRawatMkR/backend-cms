@@ -52,15 +52,27 @@ MIT
 const URI -> mongodb+srv://mukeshrawatmkr:<db_password>@cluster0testing.lgzkt.mongodb.net/
 
 HTTP Method	   Route	         Auth Required?	               Purpose
-POST	         /api/auth/register❌	Register a new user (sign-up)
-POST	          /api/auth/login	❌	Login and receive a JWT token
-POST	          /api/blogs	      ✅	Create a new blog (only logged-in users)
+POST	         /api/auth/register❌	Register a new user (sign-up)                       Done
+POST	          /api/auth/login	❌	Login and receive a JWT token                      Done
+POST	          /api/blogs	      ✅	Create a new blog (only logged-in users)              
 GET	           /api/blogs	   ❌	Publicly list all blogs (yours + others)
 GET	           /api/blogs/my	✅	Get only your own blogs
 PUT	         /api/blogs/:id	   ✅	Update your blog post (authorization: owner only)
 DELETE	      /api/blogs/:id	   ✅	Delete your blog post (authorization: owner only)
 
+#
+Authorization: Bearer <your_valid_jwt_token>
+Content-Type: application/json
+#
 
+
+## In header On Postman
+Authorization:
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODc5ZGRmNTczNDA3MzIzMjhmNjU4Y2UiLCJpYXQiOjE3NTMxODA3NjgsImV4cCI6MTc1MzI2NzE2OH0.u380JEzLJbMgTBYcGmMhRsaAvpI3cPwUUhSpfUQBCco
+
+Content-Type:
+application/json
+##
 
 
 Additional but powerfull APIs:

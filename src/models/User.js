@@ -1,3 +1,4 @@
+//Done
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -32,7 +33,6 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Password is required'],
     minlength: [6, 'Password must be at least 6 characters'],
     maxlength: [128, 'Password cannot exceed 128 characters']
-    // Don’t add regex validation here for password. Do it in controller or validator lib like Joi/Zod.
   },
   role: {
     type: String,
