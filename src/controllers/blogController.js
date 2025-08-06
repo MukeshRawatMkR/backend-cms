@@ -1,8 +1,12 @@
 module.exports = {
   createBlog: require('./postController'),
-  // getMyBlogs: require('./getMyBlogs').getMyBlogs,
-  // getAllBlogs: require('./getAllBlogs').getAllBlogs,
-  // getSingleBlog: require('./getSingleBlog').getSingleBlog,
-  // updateBlog: require('./updateBlog').updateBlog,
-  // deleteBlog: require('./deleteBlog').deleteBlog,
+  getMyBlogs: require('./getMyBlogs'),
+  getAllBlogs: require('./getAllBlogs'),
+  getSingleBlog: require('./getSingleBlog'),
+  updateBlog: require('./updateBlog'),
+  deleteBlog: require('./deleteBlog'),
 };
+
+// exports.getAllBlogs = (req, res) => {
+//   res.send("All blogs here");
+// };

@@ -29,11 +29,11 @@ exports.login = async (req, res, next) => {
   }
 };
 
-exports.getMe = async (req, res, next) => {
+
+exports.getCurrentUser = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
-    res.json({ user });
+    res.status(200).json(req.user); // user already attached by protect middleware
   } catch (err) {
-    next(err);
+    res.status(500).json({ message: 'Server error' });
   }
 };

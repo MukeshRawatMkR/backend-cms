@@ -1,26 +1,38 @@
-// src/routes/blogRoutes.js
 const express = require('express');
 const router = express.Router();
-
+const protect = require('../middlewares/auth'); // Middleware to protect routes
 const {
-  createBlog
-  // getMyBlogs,
-  // getAllBlogs,
-  // getSingleBlog,
-  // updateBlog,
-  // deleteBlog,
+  createBlog, getMyBlogs,  getAllBlogs,  getSingleBlog, updateBlog,  deleteBlog
 } = require('../controllers/blogController');
 
-const protect = require('../middlewares/auth');
+// @route   POST /api/blogs
+// @desc    Create a new blog
+// @access  Private
+router.post('/', protect, createBlog);
 
-// 👇 Public routes
-// router.get('/', getAllBlogs);                 // GET /post            - Fetch all blogs
-// router.get('/:id', getSingleBlog);            // GET /post/:id        - Fetch a single blog by ID
+// @route   GET /api/blogs/my
+// @desc    Get blogs created by the logged-in user
+// @access  Private
+// router.get('/my', protect, getMyBlogs);
 
-// 👇 Protected routes
-router.post('/', protect, createBlog);        // POST /post           - Create a new blog
-// router.get('/my/blogs', protect, getMyBlogs); // GET /post/my/blogs   - Get blogs of logged-in user
-// router.put('/:id', protect, updateBlog);      // PUT /post/:id        - Update a blog by ID
-// router.delete('/:id', protect, deleteBlog);   // DELETE /post/:id     - Delete a blog by ID
+// @route   GET /api/blogs
+// @desc    Get all blogs (public or based on your logic)
+// @access  Public
+// router.get('/', getAllBlogs);
+
+// @route   GET /api/blogs/:id
+// @desc    Get a single blog by ID
+// @access  Public
+// router.get('/:id', getSingleBlog);
+
+// @route   PUT /api/blogs/:id
+// @desc    Update a blog
+// @access  Private (only owner)
+// router.put('/:id', protect, updateBlog);
+
+// @route   DELETE /api/blogs/:id
+// @desc    Delete a blog
+// @access  Private (only owner)
+// router.delete('/:id', protect, deleteBlog);
 
 module.exports = router;

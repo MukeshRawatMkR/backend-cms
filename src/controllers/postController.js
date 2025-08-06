@@ -28,8 +28,8 @@ const createPost = async (req, res) => {
       return res.status(400).json({ message: 'Content must be between 20 and 5000 characters' });
     }
 
-    if (tags.length > 5) {
-      return res.status(400).json({ message: 'No more than 5 tags allowed' });
+    if (tags.length > 10 || tags.length < 1) {
+      return res.status(400).json({ message: 'Must have between 1 and 10 tags' });
     }
 
     for (let tag of tags) {
